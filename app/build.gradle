@@ -72,4 +72,7 @@ dependencies {
     // Icons
     implementation "androidx.compose.material:material-icons-extended:$compose_ui_version"
 
+    //Lottie Animation
+    implementation "com.airbnb.android:lottie-compose:4.0.0"
+
 }

@@ -17,7 +17,6 @@ import kotlinx.coroutines.launch
 @Composable
 fun MainScreen(navController: NavHostController) {
     val scaffoldState = rememberScaffoldState()
-    val scope = rememberCoroutineScope()
 
 
     Scaffold(

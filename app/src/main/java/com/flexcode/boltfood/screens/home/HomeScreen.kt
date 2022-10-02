@@ -6,7 +6,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Card
@@ -16,6 +15,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -47,9 +50,9 @@ fun HomeScreen() {
         Spacer(modifier = Modifier.height(10.dp))
         Text(
             text = "Discount on the entire menu",
-            fontSize = 20.sp
+            fontSize = 18.sp,
+            fontWeight = FontWeight.Bold
         )
-
         LazyRow(
             horizontalArrangement = Arrangement.spacedBy(10.dp)
         ){
@@ -57,7 +60,6 @@ fun HomeScreen() {
                 Row(
                     modifier = Modifier.fillMaxWidth()
                 ) {
-                    Spacer(modifier = Modifier.height(10.dp))
                     ShowFoodItem(foodItem = item)
                 }
 
@@ -65,11 +67,13 @@ fun HomeScreen() {
 
         }
 
+
+        Spacer(modifier = Modifier.height(10.dp))
         Text(
             text = "Get it fast",
-            fontSize = 20.sp
+            fontSize = 18.sp,
+            fontWeight = FontWeight.Bold
         )
-
         LazyRow(
             horizontalArrangement = Arrangement.spacedBy(10.dp)
         ){
@@ -77,17 +81,20 @@ fun HomeScreen() {
                 Row(
                     modifier = Modifier.fillMaxWidth()
                 ) {
-                    Spacer(modifier = Modifier.height(10.dp))
                     ShowFoodItem(foodItem = item)
                 }
 
             }
 
         }
+
+
+        Spacer(modifier = Modifier.height(10.dp))
 
         Text(
             text = "Top rated",
-            fontSize = 20.sp
+            fontSize = 18.sp,
+            fontWeight = FontWeight.Bold
         )
 
         LazyRow(
@@ -97,7 +104,6 @@ fun HomeScreen() {
                 Row(
                     modifier = Modifier.fillMaxWidth()
                 ) {
-                    Spacer(modifier = Modifier.height(10.dp))
                     ShowFoodItem(foodItem = item)
                 }
 
@@ -105,11 +111,13 @@ fun HomeScreen() {
 
         }
 
+
+        Spacer(modifier = Modifier.height(10.dp))
         Text(
             text = "New on Bolt Food",
-            fontSize = 20.sp
+            fontSize = 18.sp,
+            fontWeight = FontWeight.Bold
         )
-
         LazyRow(
             horizontalArrangement = Arrangement.spacedBy(10.dp)
         ){
@@ -117,7 +125,6 @@ fun HomeScreen() {
                 Row(
                     modifier = Modifier.fillMaxWidth()
                 ) {
-                    Spacer(modifier = Modifier.height(10.dp))
                     ShowFoodItem(foodItem = item)
                 }
 
@@ -125,11 +132,13 @@ fun HomeScreen() {
 
         }
 
+
+        Spacer(modifier = Modifier.height(10.dp))
         Text(
             text = "Pick up yourself",
-            fontSize = 20.sp
+            fontSize = 18.sp,
+            fontWeight = FontWeight.Bold
         )
-
         LazyRow(
             horizontalArrangement = Arrangement.spacedBy(10.dp)
         ){
@@ -137,7 +146,6 @@ fun HomeScreen() {
                 Row(
                     modifier = Modifier.fillMaxWidth()
                 ) {
-                    Spacer(modifier = Modifier.height(10.dp))
                     ShowFoodItem(foodItem = item)
                 }
 
@@ -169,23 +177,56 @@ fun HomeScreen() {
 fun ShowFoodItem(
     foodItem: FoodItem
 ) {
-    Box(){
+    Column() {
+
         Card(
             modifier =Modifier
                 .clip(RoundedCornerShape(8.dp)),
             elevation = 4.dp
 
-
         ) {
             Image(
                 painter = painterResource(id = foodItem.foodImage),
-            modifier = Modifier
-                .width(180.dp)
-                .height(150.dp)
-                .clip(CircleShape),
+                modifier = Modifier
+                    .width(180.dp)
+                    .height(150.dp),
                 contentDescription = null
             )
         }
+        Row(
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text(
+                text = foodItem.name,
+                fontSize = 16.sp,
+            )
+            Spacer(modifier = Modifier.weight(1f))
+            Text(
+                text = foodItem.rating,
+                fontSize = 16.sp,
+            )
+        }
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceAround
+        ) {
+            Text(
+                text = foodItem.canceledPrice,
+                fontSize = 16.sp,
+                style = TextStyle(textDecoration = TextDecoration.LineThrough)
+            )
+
+            Spacer(modifier = Modifier.weight(1f))
+
+            Text(
+                text = foodItem.price,
+                fontSize = 16.sp,
+                textAlign = TextAlign.End,
+                modifier = Modifier.padding(horizontal = 8.dp)
+
+            )
+        }
+
     }
 
 }
