@@ -1,6 +1,7 @@
 package com.flexcode.boltfood.screens.search
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -116,7 +117,8 @@ fun ShowCategoryItem(
             modifier = Modifier
                 .width(50.dp)
                 .height(50.dp)
-                .clip(CircleShape),
+                .clip(CircleShape)
+                .background(LightBlue),
             contentDescription = null
         )
         Text(
