@@ -1,7 +1,6 @@
 package com.flexcode.boltfood.screens.home
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
@@ -15,7 +14,6 @@ import androidx.compose.material.Card
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -29,23 +27,27 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.flexcode.boltfood.R
+import com.flexcode.boltfood.common.TextItem
 import com.flexcode.boltfood.data.FoodItem
 import com.flexcode.boltfood.data.foodList
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(
+    fontSize: TextUnit = 18.sp,
+    fontWeight: FontWeight = FontWeight.Bold
+) {
 
     Column(
         modifier = Modifier
             .fillMaxSize()
             .padding(10.dp)
-            .verticalScroll(rememberScrollState())
-    ) {
+            .verticalScroll(rememberScrollState()),
+
+        ) {
 
 
         Row(
@@ -53,54 +55,27 @@ fun HomeScreen() {
         ) {
             Icon(painterResource(id = R.drawable.ic_location), contentDescription = null)
             Spacer(modifier = Modifier.width(10.dp))
-            Text(
-                text = "Kilimani",
-                fontSize = 18.sp
-            )
+            TextItem(text = "Kilimani", fontSize = fontSize, fontWeight = FontWeight.Normal)
         }
         Spacer(modifier = Modifier.height(10.dp))
-        Text(
-            text = "Discount on the entire menu",
-            fontSize = 18.sp,
-            fontWeight = FontWeight.Bold
-        )
+
+        TextItem(text = "Discount on the entire menu", fontSize = fontSize, fontWeight = fontWeight)
         LazyRowItem()
-
-
-        Spacer(modifier = Modifier.height(10.dp))
-        Text(
-            text = "Get it fast",
-            fontSize = 18.sp,
-            fontWeight = FontWeight.Bold
-        )
-        LazyRowItem()
-
         Spacer(modifier = Modifier.height(10.dp))
 
-        Text(
-            text = "Top rated",
-            fontSize = 18.sp,
-            fontWeight = FontWeight.Bold
-        )
-
+        TextItem(text = "Get it fast", fontSize = fontSize, fontWeight = fontWeight)
         LazyRowItem()
-
-
         Spacer(modifier = Modifier.height(10.dp))
-        Text(
-            text = "New on Bolt Food",
-            fontSize = 18.sp,
-            fontWeight = FontWeight.Bold
-        )
+
+        TextItem(text = "Top rated", fontSize = fontSize, fontWeight = fontWeight)
         LazyRowItem()
-
-
         Spacer(modifier = Modifier.height(10.dp))
-        Text(
-            text = "Pick up yourself",
-            fontSize = 18.sp,
-            fontWeight = FontWeight.Bold
-        )
+
+        TextItem(text = "New on Bolt Food", fontSize = fontSize, fontWeight = fontWeight)
+        LazyRowItem()
+        Spacer(modifier = Modifier.height(10.dp))
+
+        TextItem(text = "Pick up yourself", fontSize = fontSize, fontWeight = fontWeight)
         LazyRowItem()
 
         LazyColumn(
@@ -129,7 +104,7 @@ fun ShowFoodItem(
         modifier = Modifier
             .clip(RoundedCornerShape(8.dp))
             .width(190.dp),
-                elevation = 4.dp
+        elevation = 4.dp
 
     ) {
         Column(
@@ -186,7 +161,8 @@ fun ShowFoodItem(
                     text = text,
                     fontSize = 16.sp,
                     textAlign = TextAlign.End,
-                    modifier = Modifier.width(90.dp)
+                    modifier = Modifier
+                        .width(90.dp)
                         .padding(horizontal = 8.dp)
                 )
             }
@@ -231,10 +207,4 @@ fun LazyRowItem() {
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun HomeScreenPreview(
-) {
-    HomeScreen()
-}
 
